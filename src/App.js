@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Home from './Home';
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      titel : 'Home',
+    }
+    this.hendelChange = this.hendelChange.bind(this);
+   //this.handleClick = this.handleClick.bind(this);
+  }
+  hendelChange(e){
+        e.preventDefault();
+          if(e.target.value.length >= 4){
+            console.log(e.target.value.length, e.target.value);
+            this.setState({
+              titel : e.target.value
+            });
+          }
+      }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>hey this is Rajesh here</h1>
+        <input type="text" onChange = {this.hendelChange}/>
+        <Home titel = {this.state.titel}/>
       </div>
     );
   }
